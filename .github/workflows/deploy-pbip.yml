@@ -15,10 +15,10 @@ jobs:
         run: |
           $path = "${{ github.workspace }}"
           $workingFolder = "$path\.ado"
-      
+
           # Crear carpeta de módulos si no existe
           New-Item -ItemType Directory -Path "$workingFolder\modules" -ErrorAction SilentlyContinue | Out-Null
-      
+
           # Descargar FabricPS-PBIP
           Write-Host "Downloading FabricPS-PBIP module"
           @(
@@ -26,11 +26,26 @@ jobs:
               "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psd1") |% {    
                   Invoke-WebRequest -Uri $_ -OutFile "$workingFolder\modules\$(Split-Path $_ -Leaf)"
               }
-      
-          # Eliminar AzureRM si está instalado para evitar conflictos
+
+          # Verificar si AzureRM está instalado antes de intentar eliminarlo
           if (Get-Module -ListAvailable -Name AzureRM) {
-              Write-Host "Uninstalling AzureRM module to avoid conflicts..."
-              Uninstall-Module -Name AzureRM -AllVersions -Force
+              Write-Host "AzureRM detected. Attempting to remove..."
+              
+              # Si el módulo está cargado en la sesión, removerlo primero
+              if (Get-Module -Name AzureRM) {
+                  Remove-Module -Name AzureRM -Force -ErrorAction SilentlyContinue
+              }
+
+              # Intentar desinstalarlo completamente
+              try {
+                  Uninstall-Module -Name AzureRM -AllVersions -Force -ErrorAction Stop
+                  Write-Host "AzureRM successfully removed."
+              }
+              catch {
+                  Write-Host "AzureRM module was not found or could not be removed."
+              }
+          } else {
+              Write-Host "AzureRM module is not installed, skipping removal."
           }
 
           # Instalar Az.Accounts si no está instalado
