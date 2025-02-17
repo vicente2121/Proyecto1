@@ -55,7 +55,8 @@ jobs:
           Import-Module "$workingFolder\modules\FabricPS-PBIP" -Force
 
           Write-Host "Authenticating with Service Principal"
-          Set-FabricAuthToken -servicePrincipalId $appId -servicePrincipalSecret $appSecret -tenantId $tenantId -reset
+          Connect-AzAccount -ServicePrincipal -ApplicationId $appId -TenantId $tenantId -Credential (New-Object System.Management.Automation.PSCredential($appId, (ConvertTo-SecureString $appSecret -AsPlainText -Force)))
+
 
           $workspacePermissions = @{
               "principal" = @{
