@@ -1,0 +1,261 @@
+table 'Primary Data'
+	lineageTag: fdecaf88-a3a6-427c-9f69-03c845253462
+
+	column GpsProvider
+		dataType: string
+		lineageTag: 8306020a-223a-4786-b026-69999a1c013b
+		summarizeBy: none
+		sourceColumn: GpsProvider
+
+		annotation SummarizationSetBy = Automatic
+
+	column BookingID
+		dataType: string
+		lineageTag: e6ffe924-ba54-43a4-8a63-0829f222bcba
+		summarizeBy: none
+		sourceColumn: BookingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipment Type'
+		dataType: string
+		lineageTag: 3e03bfa9-f12b-4b2e-b058-1519b504545d
+		summarizeBy: none
+		sourceColumn: Shipment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Booking Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0b157b31-de19-45f2-96f2-9472019ea2f1
+		summarizeBy: none
+		sourceColumn: Booking Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vehicle Registration'
+		dataType: string
+		lineageTag: 51d8e029-e747-4fec-b5b2-fc4a68e41dcc
+		summarizeBy: none
+		sourceColumn: Vehicle Registration
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Origin Location'
+		dataType: string
+		lineageTag: b344e407-27ec-4764-bc56-9ff3c7adb13c
+		summarizeBy: none
+		sourceColumn: Origin Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination Location'
+		dataType: string
+		lineageTag: c318a531-0697-4d94-8c88-0eb51a02e3a5
+		summarizeBy: none
+		sourceColumn: Destination Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Origin Location Latitude'
+		dataType: double
+		lineageTag: ddcd14fd-5083-447c-816a-d262b3fd99eb
+		summarizeBy: sum
+		sourceColumn: Origin Location Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Origin Location Longitude'
+		dataType: double
+		lineageTag: 4fb37b3b-c388-4375-b75a-7c8c543a54d2
+		summarizeBy: sum
+		sourceColumn: Origin Location Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Destination Location Latitude'
+		dataType: double
+		lineageTag: fc83ef77-489e-4325-b98a-7f3fe3c2b48f
+		summarizeBy: sum
+		sourceColumn: Destination Location Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Destination Location Longitude'
+		dataType: double
+		lineageTag: 5842e0c2-6f54-4393-864d-2d50e0bbdf34
+		summarizeBy: sum
+		sourceColumn: Destination Location Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Data Ping time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 17351ad6-a700-44a0-ab95-e3ecb18d7416
+		summarizeBy: none
+		sourceColumn: Data Ping time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned ETA'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e64a8852-956a-45a4-8192-294263b683eb
+		summarizeBy: none
+		sourceColumn: Planned ETA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Location'
+		dataType: string
+		lineageTag: 2dbdf7f0-e18c-46d8-a22b-4814a0fa0941
+		summarizeBy: none
+		sourceColumn: Current Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Actual ETA'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3890dc32-5cd3-4a0e-bbfd-fbdc31dec291
+		summarizeBy: none
+		sourceColumn: Actual ETA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Location Latitude'
+		dataType: double
+		lineageTag: acc29b9d-7840-4cc1-ade5-62d2ad25aea5
+		summarizeBy: sum
+		sourceColumn: Current Location Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Curren Location Longitude'
+		dataType: double
+		lineageTag: 7b12d67e-1741-460d-aa47-c64d1edc5278
+		summarizeBy: sum
+		sourceColumn: Curren Location Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ontime
+		dataType: string
+		lineageTag: 93a448ee-7bcf-47dc-be1c-7b753b4da033
+		summarizeBy: none
+		sourceColumn: Ontime
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trip Start Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e210c692-f8e5-4559-8508-f5547805f327
+		summarizeBy: none
+		sourceColumn: Trip Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Trip End Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 47634b7b-b3e9-461b-8f70-94b6ded8764d
+		summarizeBy: none
+		sourceColumn: Trip End Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transportation Distance (KM)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9c7a01a0-620a-4d19-97f5-5f58f5ac8730
+		summarizeBy: sum
+		sourceColumn: Transportation Distance (KM)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vehicle Type'
+		dataType: string
+		lineageTag: f39aa29e-2a18-483f-a7ec-f35113044d4c
+		summarizeBy: none
+		sourceColumn: Vehicle Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Minimum Kms To Be Covered In A Day'
+		dataType: string
+		lineageTag: 179460c9-2381-4af7-b7a6-129231f19073
+		summarizeBy: none
+		sourceColumn: Minimum Kms To Be Covered In A Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver Name'
+		dataType: string
+		lineageTag: c5c71333-7286-465d-9575-328b1d3ea16f
+		summarizeBy: none
+		sourceColumn: Driver Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver Mobile No'
+		dataType: string
+		lineageTag: 3264f411-60fb-4016-a40b-71013d4bf18f
+		summarizeBy: none
+		sourceColumn: Driver Mobile No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 06abdb4e-4860-4af4-ba0b-edf2a1111b7f
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supplier Name'
+		dataType: string
+		lineageTag: 5f18d501-88fd-4d4e-8ab7-92f3055794c9
+		summarizeBy: none
+		sourceColumn: Supplier Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Material Shipped'
+		dataType: string
+		lineageTag: becf6561-fcdd-411d-a365-d0d57861634d
+		summarizeBy: none
+		sourceColumn: Material Shipped
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Primary Data' = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(File.Contents("C:\Users\vicen\Desktop\TutoriaYoutube\Data.xlsx"), null, true),
+				    #"Primary Data_Sheet" = Origen{[Item="Primary Data",Kind="Sheet"]}[Data],
+				    #"Encabezados promovidos" = Table.PromoteHeaders(#"Primary Data_Sheet", [PromoteAllScalars=true]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"GpsProvider", type text}, {"BookingID", type text}, {"Shipment Type", type text}, {"Booking Date", type datetime}, {"Vehicle Registration", type text}, {"Origin Location", type text}, {"Destination Location", type text}, {"Origin Location Latitude", type number}, {"Origin Location Longitude", type number}, {"Destination Location Latitude", type number}, {"Destination Location Longitude", type number}, {"Data Ping time", type datetime}, {"Planned ETA", type datetime}, {"Current Location", type text}, {"Actual ETA", type datetime}, {"Current Location Latitude", type number}, {"Curren Location Longitude", type number}, {"Ontime", type text}, {"Trip Start Date", type datetime}, {"Trip End Date", type datetime}, {"Transportation Distance (KM)", Int64.Type}, {"Vehicle Type", type text}, {"Minimum Kms To Be Covered In A Day", type text}, {"Driver Name", type text}, {"Driver Mobile No", type any}, {"Customer Name", type text}, {"Supplier Name", type text}, {"Material Shipped", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.61\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "57a8e760331a45c0abc5",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"373bd6bee267467dd41a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":42.666666666666664,\"z\":0,\"width\":594.4888888888889,\"height\":283.02222222222224,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Primary Data.Actual ETA\"},{\"queryRef\":\"Primary Data.Booking Date\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"Primary Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Actual ETA\"},\"Name\":\"Primary Data.Actual ETA\",\"NativeReferenceName\":\"Actual ETA\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Booking Date\"},\"Name\":\"Primary Data.Booking Date\",\"NativeReferenceName\":\"Booking Date\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 283.02,
+          "width": 594.49,
+          "x": 0.00,
+          "y": 42.67,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

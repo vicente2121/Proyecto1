@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Caso_Tutorial"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b74e3f9f-1564-49e4-9bf1-ab7a72bf9602"
+  }
+}

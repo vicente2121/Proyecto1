@@ -1,0 +1,75 @@
+name: Deploy PBIP to Power BI
+
+on:
+  workflow_dispatch:  # Permite ejecución manual desde GitHub Actions
+
+jobs:
+  deploy:
+    runs-on: windows-latest  # Usa un runner de Windows
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Download Dependencies
+        shell: pwsh
+        run: |
+          $path = "${{ github.workspace }}"
+          $workingFolder = "$path\.ado"
+
+          New-Item -ItemType Directory -Path "$workingFolder\modules" -ErrorAction SilentlyContinue | Out-Null
+
+          Write-Host "Downloading FabricPS-PBIP module"
+          @(
+              "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psm1",
+              "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psd1") |% {    
+                  Invoke-WebRequest -Uri $_ -OutFile "$workingFolder\modules\$(Split-Path $_ -Leaf)"
+              }
+
+          Write-Host "Installing Az.Accounts module"
+          if(-not (Get-Module Az.Accounts -ListAvailable)){
+              Install-Module Az.Accounts -Scope CurrentUser -Force
+          }
+
+      - name: Deploy PBIP to Power BI
+        shell: pwsh
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_SECRET: ${{ secrets.APP_SECRET }}
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
+          ADMIN_PRINCIPAL_ID: ${{ secrets.ADMIN_PRINCIPAL_ID }}
+        run: |
+          $path = "${{ github.workspace }}"
+          $appId = "${{ env.APP_ID }}"
+          $appSecret = "${{ env.APP_SECRET }}"
+          $tenantId = "${{ env.TENANT_ID }}"                                        
+          $workspaceName = "${{ env.WORKSPACE_NAME }}"
+          $adminPrincipalId = "${{ env.ADMIN_PRINCIPAL_ID }}"
+
+          # Reemplaza los nombres de carpetas de PBIP
+          $pbipSemanticModelPath = "$path\[Semantic Model folder name].SemanticModel"
+          $pbipReportPath = "$path\[Report folder name].Report"
+
+          $workingFolder = "$path\.ado"
+          Import-Module "$workingFolder\modules\FabricPS-PBIP" -Force
+
+          Write-Host "Authenticating with Service Principal"
+          Set-FabricAuthToken -servicePrincipalId $appId -servicePrincipalSecret $appSecret -tenantId $tenantId -reset
+
+          $workspacePermissions = @{
+              "principal" = @{
+                  "id" = "$adminPrincipalId"
+                  "type" = "user"
+              }
+              "role"= "Admin"
+          }
+
+          Write-Host "Ensuring Fabric Workspace & permissions"
+          $workspaceId = New-FabricWorkspace -name $workspaceName -skipErrorIfExists
+          Set-FabricWorkspacePermissions $workspaceId $workspacePermissions
+
+          Write-Host "Publishing Semantic Model"
+          $semanticModelImport = Import-FabricItem -workspaceId $workspaceId -path $pbipSemanticModelPath
+
+          Write-Host "Publishing Report"
+          $reportImport = Import-FabricItem -workspaceId $workspaceId -path $pbipReportPath -itemProperties @{"semanticModelId"=$semanticModelImport.Id}
