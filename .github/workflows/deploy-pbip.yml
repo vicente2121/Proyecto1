@@ -15,20 +15,21 @@ jobs:
         run: |
           $path = "${{ github.workspace }}"
           $workingFolder = "$path\.ado"
-
+      
           New-Item -ItemType Directory -Path "$workingFolder\modules" -ErrorAction SilentlyContinue | Out-Null
-
+      
           Write-Host "Downloading FabricPS-PBIP module"
           @(
               "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psm1",
               "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psd1") |% {    
                   Invoke-WebRequest -Uri $_ -OutFile "$workingFolder\modules\$(Split-Path $_ -Leaf)"
               }
-
+      
           Write-Host "Installing Az.Accounts module"
           if(-not (Get-Module Az.Accounts -ListAvailable)){
-              Install-Module Az.Accounts -Scope CurrentUser -Force
+              Install-Module Az.Accounts -Scope CurrentUser -Force -AllowClobber
           }
+      
 
       - name: Deploy PBIP to Power BI
         shell: pwsh
