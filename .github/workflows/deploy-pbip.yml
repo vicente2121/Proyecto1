@@ -36,19 +36,19 @@ jobs:
           APP_ID: ${{ secrets.APP_ID }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
           TENANT_ID: ${{ secrets.TENANT_ID }}
-          WORKSPACE_NAME: ${{ secrets.WORKSPACE_NAME }}
+          WORKSPACE_ID: ${{ secrets.WORKSPACE_ID }}
           ADMIN_PRINCIPAL_ID: ${{ secrets.ADMIN_PRINCIPAL_ID }}
         run: |
           $path = "${{ github.workspace }}"
           $appId = "${{ env.APP_ID }}"
           $appSecret = "${{ env.APP_SECRET }}"
           $tenantId = "${{ env.TENANT_ID }}"                                        
-          $workspaceName = "${{ env.WORKSPACE_NAME }}"
+          $workspaceId = "${{ env.WORKSPACE_ID }}"
           $adminPrincipalId = "${{ env.ADMIN_PRINCIPAL_ID }}"
 
-          # Reemplaza los nombres de carpetas de PBIP
-          $pbipSemanticModelPath = "$path\[Semantic Model folder name].SemanticModel"
-          $pbipReportPath = "$path\[Report folder name].Report"
+          # Rutas de los archivos PBIP (ajusta los nombres según tu estructura)
+          $pbipSemanticModelPath = "$path\Caso_Tutorial.SemanticModel"
+          $pbipReportPath = "$path\Caso_Tutorial.Report"
 
           $workingFolder = "$path\.ado"
           Import-Module "$workingFolder\modules\FabricPS-PBIP" -Force
@@ -65,7 +65,6 @@ jobs:
           }
 
           Write-Host "Ensuring Fabric Workspace & permissions"
-          $workspaceId = New-FabricWorkspace -name $workspaceName -skipErrorIfExists
           Set-FabricWorkspacePermissions $workspaceId $workspacePermissions
 
           Write-Host "Publishing Semantic Model"
