@@ -34,6 +34,15 @@
           "x": 0.00,
           "y": 42.67,
           "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"3f386813bdd596ce8157\",\"layouts\":[{\"id\":0,\"position\":{\"x\":280.1777777777778,\"y\":278.75555555555553,\"z\":1,\"width\":594.4888888888889,\"height\":283.02222222222224,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Primary Data.Actual ETA\"},{\"queryRef\":\"Primary Data.Booking Date\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"Primary Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Actual ETA\"},\"Name\":\"Primary Data.Actual ETA\",\"NativeReferenceName\":\"Actual ETA\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"Booking Date\"},\"Name\":\"Primary Data.Booking Date\",\"NativeReferenceName\":\"Booking Date\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 283.02,
+          "width": 594.49,
+          "x": 280.18,
+          "y": 278.76,
+          "z": 1.00
         }
       ],
       "width": 1280.00
